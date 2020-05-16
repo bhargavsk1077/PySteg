@@ -38,7 +38,8 @@ class Steganographer:
         output_filename = file_split[0] + '_steg.' + file_split[1]
 
         file_ending = file_split[1]
-        embedded_image = (self.embedded_image).astype(numpy.uint8)
+        #embedded_image = (self.embedded_image).astype(numpy.uint8)
+        embedded_image = (self.embedded_image).astype(numpy.int32)
         if file_ending == 'jpg':
             embedded_image = numpy.zeros([self.embedded_image.shape[0], self.embedded_image.shape[1], 3])
             for i in range(0, 3):
@@ -273,6 +274,7 @@ class Steganographer:
         num_blocks = (num_rows * num_cols)/(block_size * block_size)
 
         img_cap = math.floor(bpb*num_blocks)
+        #img_cap = bpb*num_blocks
 
         # take this with a grain of salt for now, not sure if accurate
         print("MAX IMAGE HIDING CAPACITY: " + str(img_cap))
@@ -552,7 +554,7 @@ class Steganographer:
         for j in range(0, redundancy):
             testArray.append(finalMessage[j*tmp:((j+1)*tmp)])
 
-        print("actualy message length = " + str(tmp))
+        print("actual message length = " + str(tmp))
         print()
 
         # use a majority vote to decide what bit it should actually be
@@ -656,11 +658,11 @@ class Steganographer:
 
                 # run decodeBlock on each block
                 block = self.embedded_image[block_size*i:block_size*(i+1), j*block_size:block_size*(j+1)]
-                finalMessage += self.decodeBlock(block)
+                finalMessage += self.decodeBlock(block,1)
 
         print("message out in bits:")
         print()
-        print(finalMessage)
+        #print(finalMessage)
         print()
         self.message = self.convert_message_to_string(finalMessage)
 

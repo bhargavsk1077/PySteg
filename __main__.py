@@ -5,26 +5,7 @@ import imageio
 from steganographer import Steganographer
 import sys
 
-# TODO: Fix help messages in click
-#@click.command()
-#@click.option('--embed', '-e', default=False, is_flag=True, help='')
-#@click.option('--decode', '-d', default=False, is_flag=True, help='')
-#@click.argument('message_file')
-#@click.argument('image_file')
-"""
-if sys.argv[1]=='embed':
-    embed=True
-    decode=False
-elif sys.argv[1]=='decode':
-    decode=True
-    embde=False
-else:
-    printf("enter a valid method")
-    exit()
 
-image_file = sys.argv[2]
-message_file = sys.argv[3]
-"""
 def main(embed, decode, image_file, message_file):
     """Run Steganographer tool."""
     method = ""
@@ -71,14 +52,18 @@ if __name__ == '__main__':
     if sys.argv[1]=='embed':
         embed=True
         decode=False
+        image_file = sys.argv[2]
+        message_file = sys.argv[3]
+        main(embed,decode,image_file,message_file)
     elif sys.argv[1]=='decode':
         decode=True
-        embde=False
+        embed=False
+        image_file=sys.argv[2]
+        main(embed,decode,image_file,None)
     else:
-        printf("enter a valid method")
+        print("enter a valid method")
         exit()
 
-    image_file = sys.argv[2]
-    message_file = sys.argv[3]
+    
 
-    main(embed,decode,image_file,message_file)
+    #main(embed,decode,image_file,message_file)
