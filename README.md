@@ -1,6 +1,8 @@
 # PySteg
 A python steganography tool based on singular value decomposition
 
+Forked from another repository which can be found [here](https://github.com/rodartha/SVD_Steg) , and currently working on improving it , So still a work in progress. 
+
 ## usage 
 1. create virtual env
 2. install dependencies using `pip install -r requirements.txt`
