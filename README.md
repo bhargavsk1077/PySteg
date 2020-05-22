@@ -9,3 +9,7 @@ A python steganography tool based on singular value decomposition
    example: `python3 __main__.py embed img1.jpg text1.txt`
    
 Note: the image and text files should be inside the input directory, And the resulting image after embedding and the decoded text after decoding will be present in the output directory.
+
+## Algorithm
+The whole implementation is based on Bergman's method with a few changes , Check **OneBlock.py** to understand the basic algorihtm,
+the main code is using a modified version of this.
